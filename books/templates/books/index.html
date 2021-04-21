@@ -1,0 +1,12 @@
+{% extends 'layout/main.html' %}
+{% block body %}
+    <a href="{% url 'create' %}">Add</a>
+    <h1>list of books</h1>
+    {% for book in books %}
+        <h2>Title: {{book.title}}</h2>
+        <p>Description: {{book.description}}</p>
+        <a href="{% url 'edit' book.id %}">Edit</a>
+        <a href="{% url 'delete' book.id %}">Delete</a>
+        <hr>
+    {% endfor %}
+{% endblock body %}
