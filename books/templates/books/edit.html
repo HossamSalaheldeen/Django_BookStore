@@ -2,7 +2,6 @@
 {% block title %} edit {% endblock title %}
 {% block body %}
     <form action="{% url 'edit' book.id %}" method="POST">
-
         {% csrf_token %}
         {{form.as_p}}
         <button type="submit">update</button>

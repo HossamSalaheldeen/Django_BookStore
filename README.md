@@ -15,17 +15,19 @@ Create a virtual environment to install dependencies in and activate it:
 $ python -m venv env
 $ .\env\Scripts\activate
 ```
+
 ```sh
 (env)$ pip install -r requirements.txt
 ```
+
 Note the `(env)` in front of the prompt. This indicates that this terminal
 session operates in a virtual environment set up by `venv`.
 
 Once `pip` has finished downloading the dependencies:
 ```sh
 (env)$ cd Django_BookStore
+(env)$ python manage.py makemigrations
+(env)$ python manage.py migrate
 (env)$ python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/books/`.
-
-
