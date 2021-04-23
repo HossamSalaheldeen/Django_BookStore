@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
+import uuid
 
 
 # Create your models here.
@@ -23,7 +24,7 @@ class Category(models.Model):
         return self.name
 
 class ISBN(models.Model):
-    #models.UUIDField(_(""))
+    #isbn_number = models.UUIDField(default = uuid.uuid4,editable=False)
     isbn_number = models.AutoField(primary_key=True)
     author_title = models.CharField(max_length=50, null=True, blank=True)
     book_title = models.CharField(max_length=50, null=True, blank=True)
@@ -34,7 +35,7 @@ class ISBN(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=2048)
-    creator = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="posts")
+    creator = models.ForeignKey(User, null=True, on_delete=models.CASCADE, related_name="books")
     category = models.ManyToManyField(Category)
     isbn = models.OneToOneField(ISBN, on_delete=models.CASCADE ,null=True, blank=True)
     tag = models.ForeignKey(Tag, null=True, blank=True, on_delete=models.CASCADE)

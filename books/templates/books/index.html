@@ -1,5 +1,6 @@
 {% extends 'layout/main.html' %}
 {% block body %}
+    <h1>welcome {{request.user.username}}</h1>
     <a href="{% url 'create' %}">Add</a>
     <h1>list of books</h1>
     {% for book in books %}
